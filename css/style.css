@@ -37,11 +37,16 @@ h1 {
     border-radius: 5px;
     border: 1px solid #99CEA8;
     margin: 0 17px 34px;
+    cursor: pointer;
 }
 
 .card-back img {
     width: 100px;
     height: 100px;
+}
+
+.hidden {
+    opacity: 0;
 }
 
 @media (max-width: 600px) {
