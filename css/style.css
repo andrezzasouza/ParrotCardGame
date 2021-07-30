@@ -23,6 +23,8 @@ h1 {
 .game-area {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    margin: 0px 99px 153px 105px;
 }
 
 .card-back {
@@ -34,9 +36,22 @@ h1 {
     justify-content: center;
     border-radius: 5px;
     border: 1px solid #99CEA8;
+    margin: 0 17px 34px;
 }
 
 .card-back img {
     width: 100px;
     height: 100px;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 36px;
+        line-height: 42px;
+        letter-spacing: -0.004em;
+    }
+
+    .game-area {
+        margin: 47px, 32.5%;
+    }
 }
