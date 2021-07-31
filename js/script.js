@@ -19,6 +19,8 @@ function insertCards(amountCards) {
     for (let i = 0; i < (amountCards / 2); i++) {
         duplicateArray.push(picArray[i]);
         duplicateArray.push(picArray[i]);
+
+        //posso comparar o número do índice da carta pra saber se elas são iguais ou não
     }
 
     duplicateArray.sort(compare);
@@ -27,10 +29,15 @@ function insertCards(amountCards) {
     let insert = "";
 
     for (let i = 0; i < amountCards; i++) {
-        insert += `<div class="card-back" onclick="flipCard(this);">
-                        <img class="front" src="/img/front.png" />
-                        <img class="back hidden" src="/img/${duplicateArray[i]}" />
+        insert += `<div class="card">
+                        <div class="face" onclick="flipCard(this);">
+                            <img class="back" src="/img/front.png" />
+                        </div>
+                        <div class="face hidden" onclick="flipCard(this);">
+                            <img class="front" src="/img/${duplicateArray[i]}" />
+                        </div>
                     </div>`;
+
     }
 
     area.innerHTML = insert;
@@ -41,6 +48,10 @@ insertCards(amountCards);
 let playCounter = 0;
 
 function flipCard(clickedCard) {
-    //instruções para virar a carta
-    playCounter++
+
+    const parentElement = clickedCard.parentNode;
+    const showFront = parentElement.querySelector(".hidden");
+    showFront.classList.remove("hidden");
+
+    console.log(parentElement);
 }

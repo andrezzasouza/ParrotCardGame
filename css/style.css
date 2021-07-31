@@ -27,20 +27,46 @@ h1 {
     margin: 0px 99px 153px 105px;
 }
 
-.card-back {
+.card {
     width: 117px;
     height: 146px;
+    position: relative;
+    margin: 0 17px 34px;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
     background-color: #A7E9AF;
+    border-radius: 5px;
+    border: 1px solid #99CEA8;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
-    border: 1px solid #99CEA8;
-    margin: 0 17px 34px;
-    cursor: pointer;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
 }
 
+.card-front {
+    transform: rotateY(180deg);
+}
+
+.effect-front {
+    transform: rotateY(0deg);
+  }
+
+.card-back {
+    transform: rotateY(-180deg);
+}
+
+
+/* talvez eu consiga manter o efeito do :active quando clica com um setInterval que fica ativo até o próximo clique? */ 
+
 .front {
+    display: initial;
     width: 100px;
     height: 100px;
 }
@@ -51,15 +77,9 @@ h1 {
 }
 
 .hidden {
-    opacity: 0;
+    display: none;
     width: 0px;
     height: 0px;
-}
-
-.effect {
-    backface-visibility: hidden;
-    transition: all 2s;
-    transform-style: preserve-3d;
 }
 
 @media (max-width: 600px) {
