@@ -35,11 +35,11 @@ function insertCards(amountCards) {
     let insert = "";
 
     for (let i = 0; i < amountCards; i++) {
-        insert += `<div class="card">
-                        <div class="face" onclick="flipCard(this);">
+        insert += `<div class="card" onclick="flipCard(this);">
+                        <div class="back-face face effect-back">
                             <img class="back" src="/img/front.png" />
                         </div>
-                        <div class="face front-face hidden" onclick="flipCard(this);">
+                        <div class="face effect-front">
                             <img class="front" src="/img/${duplicateArray[i]}" />
                         </div>
                     </div>`;
@@ -54,13 +54,15 @@ insertCards(amountCards);
 
 
 let amountPairs = amountCards / 2;
-console.log(amountPairs)
-console.log("Amount of pairs")
-//inserir em algum lugar a lógica que confirma se amountPairs nãoe está zerado
 
-let playCounter = 0;
+
+let showFront = "";
+let hideBack = "";
+
 let firstCard = "";
 let secondCard = "";
+
+let playCounter = 0;
 
 const board = document.querySelector(".game-area");
 
@@ -69,19 +71,36 @@ function flipCard(clickedCard) {
     console.log(clickedCard)
     console.log ("mostra valor do clickedCard")
 
-    const parentElement = clickedCard.parentNode;
-    const showFront = parentElement.querySelector(".hidden");
-    showFront.classList.remove("hidden");
+    // const parentElement = clickedCard.parentNode;
+
+    // console.log(parentElement);
+    // console.log("parentElement aqui em cima");
+
+    
+
+    showFront = clickedCard.querySelector(".back-face");
+    console.log(showFront);
+    console.log("showFront antes do remove");
+    showFront.classList.remove("effect-back");
+    console.log(showFront);
+    console.log("showFront depois do remove");
+
+    hideBack = clickedCard.querySelector(".effect-front");
+    console.log(hideBack);
+    console.log("hideBack antes do remove");
+    hideBack.classList.remove("effect-front");
+    console.log(hideBack);
+    console.log("hideBack depois do remove");
 
     console.log(playCounter);
     console.log("mostra valor do playCounter")
 
     if (playCounter % 2 === 0) {
-        firstCard = showFront;
+        firstCard = hideBack;
         secondCard = "";
 
     } else {
-        secondCard = showFront;
+        secondCard = hideBack;
 
         if (firstCard.innerHTML === secondCard.innerHTML) {
             amountPairs--;
@@ -97,8 +116,17 @@ function flipCard(clickedCard) {
 }
 
 const unturnCards = function () {
-    firstCard.classList.add("hidden");
-    secondCard.classList.add("hidden");
+
+    const firstCardParent = firstCard.parentNode;
+    const firstDivList = firstCardParent.querySelectorAll("div");
+    const secondCardParent = secondCard.parentNode;
+    const secondDivList = secondCardParent.querySelectorAll("div");
+
+    firstDivList[0].classList.add("effect-back");
+    firstDivList[1].classList.add("effect-front");
+
+    secondDivList[0].classList.add("effect-back");
+    secondDivList[1].classList.add("effect-front");
 }
 
 const allowClicks = function () {

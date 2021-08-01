@@ -55,20 +55,17 @@ h1 {
     transform-style: preserve-3d;
 }
 
-.card-front {
+.back-face {
     transform: rotateY(180deg);
 }
 
-.effect-front {
+.effect-back {
     transform: rotateY(0deg);
   }
 
-.card-back {
+.effect-front {
     transform: rotateY(-180deg);
 }
-
-
-/* talvez eu consiga manter o efeito do :active quando clica com um setInterval que fica ativo até o próximo clique? */ 
 
 .front {
     display: initial;
