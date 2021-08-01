@@ -18,6 +18,7 @@ h1 {
     line-height: 66px;
     letter-spacing: -0.004em;
     font-weight: 700;
+    cursor: default;
 }
 
 .game-area {
@@ -25,6 +26,10 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
     margin: 0px 99px 153px 105px;
+}
+
+.no-clicking {
+    pointer-events: none;
 }
 
 .card {

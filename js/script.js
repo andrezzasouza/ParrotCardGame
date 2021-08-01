@@ -62,6 +62,8 @@ let playCounter = 0;
 let firstCard = "";
 let secondCard = "";
 
+const board = document.querySelector(".game-area");
+
 function flipCard(clickedCard) {
 
     console.log(clickedCard)
@@ -76,29 +78,19 @@ function flipCard(clickedCard) {
 
     if (playCounter % 2 === 0) {
         firstCard = showFront;
-        console.log(firstCard)
-        console.log ("mostra valor do firstCard")
         secondCard = "";
-        //se não funcionar com o showFront, posso usar o clickedCard?
-        //alguma forma de guardar o índice ou conteúdo do array
 
     } else {
         secondCard = showFront;
-        console.log(secondCard)
-        console.log ("mostra valor do secondCard")
-
-        console.log(firstCard)
-        console.log(secondCard)
 
         if (firstCard.innerHTML === secondCard.innerHTML) {
             amountPairs--;
             checkEndGame();
         } else {
+            board.classList.add("no-clicking");
             setTimeout(unturnCards, 1000);
-            // desvirar as duas cartas com setTimeout
+            setTimeout(allowClicks, 1000);
         }
-
-        console.log(amountPairs);
     }
 
     playCounter++;    
@@ -107,6 +99,10 @@ function flipCard(clickedCard) {
 const unturnCards = function () {
     firstCard.classList.add("hidden");
     secondCard.classList.add("hidden");
+}
+
+const allowClicks = function () {
+    board.classList.remove("no-clicking");
 }
 
 
