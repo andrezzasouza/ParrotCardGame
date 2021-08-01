@@ -58,7 +58,7 @@ console.log(amountPairs)
 console.log("Amount of pairs")
 //inserir em algum lugar a lógica que confirma se amountPairs nãoe está zerado
 
-let playCounter = 1;
+let playCounter = 0;
 let firstCard = "";
 let secondCard = "";
 
@@ -74,7 +74,7 @@ function flipCard(clickedCard) {
     console.log(playCounter);
     console.log("mostra valor do playCounter")
 
-    if (playCounter % 2 !== 0) {
+    if (playCounter % 2 === 0) {
         firstCard = showFront;
         console.log(firstCard)
         console.log ("mostra valor do firstCard")
@@ -94,8 +94,7 @@ function flipCard(clickedCard) {
             amountPairs--;
             checkEndGame();
         } else {
-            firstCard.classList.add("hidden");
-            secondCard.classList.add("hidden");
+            setTimeout(unturnCards, 1000);
             // desvirar as duas cartas com setTimeout
         }
 
@@ -105,13 +104,20 @@ function flipCard(clickedCard) {
     playCounter++;    
 }
 
+const unturnCards = function () {
+    firstCard.classList.add("hidden");
+    secondCard.classList.add("hidden");
+}
+
 
 // FINALIZA O JOGO
 
 function checkEndGame () {
     if (amountPairs === 0) {
-        alert(`Você ganhou o jogo em ${playCounter} jogadas!`);
+        setTimeout(delayedEnding, 1000);
     }
+}
 
-    // colocar um setTimeout aqui também pra carta virar antes do alert aparecer e não depois
+const delayedEnding = function () {
+    alert(`Você ganhou o jogo em ${playCounter} jogadas!`);
 }
