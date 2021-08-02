@@ -109,14 +109,60 @@ h1 {
     height: 100px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     h1 {
         font-size: 36px;
         line-height: 42px;
         letter-spacing: -0.004em;
     }
 
+    .clock {
+        width: 60px;
+    }
+
+    .show-clock {
+        font-size: 24px;    
+    }
+
+    .clock span {
+        font-size: 16px;
+    }
+
     .game-area {
-        margin: 47px, 32.5%;
+        margin: 47px 15%;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 0 15%;
+    }
+
+    .title-holder {
+        width: 100%;
+    }
+
+    .clock {
+        width: 50px;
+    }
+    
+    .show-clock {
+        font-size: 20px;    
+    }
+    
+    .clock span {
+        font-size: 14px;
+    }
+    
+    .timer {
+       font-size: 12px;
+       height: 16px;
+    }
+    .title-holder {
+        padding: 0 10%;
+    }
+
+    .game-area {
+        margin: 47px 0 0;
     }
 }
