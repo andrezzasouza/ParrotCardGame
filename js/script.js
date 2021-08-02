@@ -1,4 +1,4 @@
-// CARREGA PROMPT NO INÍCIO DO JOGO
+// CARREGA PROMPT E IMPEDE INSERÇÃO DE ALGUNS VALORES
 
 let amountCards = Number(prompt("Com quantas cartas você quer jogar? Escolha um número par de 4 a 14."));
 
@@ -8,7 +8,15 @@ while (amountCards < 4 || amountCards > 14 || amountCards % 2 !== 0) {
 
 // EMBARALHA AS CARTAS
 
-const picArray = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "metalparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif"];
+const picArray = [
+    "bobrossparrot.gif", 
+    "explodyparrot.gif", 
+    "fiestaparrot.gif", 
+    "metalparrot.gif", 
+    "revertitparrot.gif", 
+    "tripletsparrot.gif", 
+    "unicornparrot.gif"
+];
 
 function compare() {
     return Math.random() - 0.5;
@@ -46,7 +54,7 @@ function insertCards(amountCards) {
     area.innerHTML = insert;
 }
 
-const addClock = document.querySelector(".counter")
+const addClock = document.querySelector(".counter");
 
 function insertClock() {
     addClock.innerHTML = "0<span>s</span>";
@@ -56,21 +64,11 @@ function insertClock() {
 insertClock();
 insertCards(amountCards);
 
-let amountPairs = amountCards / 2;
-
-let showFront = "";
-let hideBack = "";
-
-let firstCard = "";
-let secondCard = "";
-
-let playCounter = 0;
-let time = 0;
-
-const board = document.querySelector(".game-area");
-let idInterval;
-
 // INICIA CONTAGEM DO RELÓGIO
+
+let amountPairs = amountCards / 2;
+let idInterval;
+let time = 0;
 
 const startClock = function () {
     if (amountPairs === 0) {
@@ -82,6 +80,16 @@ const startClock = function () {
 }
 
 // VIRA AS CARTAS
+
+let playCounter = 0;
+
+let showFront = "";
+let hideBack = "";
+
+let firstCard = "";
+let secondCard = "";
+
+const board = document.querySelector(".game-area");
 
 function flipCard(clickedCard) {
     if (playCounter === 0) {
@@ -97,7 +105,6 @@ function flipCard(clickedCard) {
     if (playCounter % 2 === 0) {
         firstCard = hideBack;
         secondCard = "";
-
     } else {
         secondCard = hideBack;
 
@@ -117,10 +124,8 @@ function flipCard(clickedCard) {
 
 const unturnCards = function () {
 
-    const firstCardParent = firstCard.parentNode;
-    const firstDivList = firstCardParent.querySelectorAll("div");
-    const secondCardParent = secondCard.parentNode;
-    const secondDivList = secondCardParent.querySelectorAll("div");
+    const firstDivList = firstCard.parentNode.querySelectorAll("div");
+    const secondDivList = secondCard.parentNode.querySelectorAll("div");
 
     firstDivList[0].classList.add("effect-back");
     firstDivList[1].classList.add("effect-front");
@@ -150,10 +155,9 @@ const delayedEnding = function () {
 
 // VERIFICA SE JOGO RECOMEÇA
 
-let restart = "";
-
 function checkRestart() {
 
+    let restart = "";
     let validAnswer = false;
 
     do {
@@ -167,14 +171,12 @@ function checkRestart() {
 
     if (restart === "S") {
         restartGame();
-
     } else if (restart === "N") {
         for (let i = 0; i < clearGame.length; i++) {
             clearGame[i].remove();  
         }
         const overMessage = document.querySelector("h1");
         overMessage.innerHTML = "GAME OVER!"
-        clearInterval(idInterval);
     }
 }
 
@@ -183,4 +185,3 @@ function checkRestart() {
 function restartGame() {
     document.location.href="";
 }
-
