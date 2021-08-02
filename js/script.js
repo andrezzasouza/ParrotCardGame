@@ -1,5 +1,3 @@
-let start = true;
-
 // CARREGA PROMPT NO INÍCIO DO JOGO
 
 let amountCards = Number(prompt("Com quantas cartas você quer jogar? Escolha um número par de 4 a 14."));
@@ -48,7 +46,7 @@ function insertCards(amountCards) {
     area.innerHTML = insert;
 }
 
-let addClock = document.querySelector(".counter")
+const addClock = document.querySelector(".counter")
 
 function insertClock() {
     addClock.innerHTML = "0<span>s</span>";
@@ -147,14 +145,14 @@ function checkEndGame () {
 
 const delayedEnding = function () {
     alert(`Você ganhou o jogo em ${playCounter} jogadas e ${time} segundos!`);
-    restartGame();
+    checkRestart();
 }
 
 // VERIFICA SE JOGO RECOMEÇA
 
 let restart = "";
 
-function restartGame() {
+function checkRestart() {
 
     let validAnswer = false;
 
@@ -167,15 +165,8 @@ function restartGame() {
 
     const clearGame = document.querySelectorAll(".card");
 
-    for (let i = 0; i < clearGame.length; i++) {
-        clearGame[i].remove();  
-    }
-
     if (restart === "S") {
-        const screen = document.querySelector("body");
-        screen.innerHTML = "";
-        start = true;
-        clearInterval(idInterval);
+        restartGame();
 
     } else if (restart === "N") {
         for (let i = 0; i < clearGame.length; i++) {
@@ -184,8 +175,12 @@ function restartGame() {
         const overMessage = document.querySelector("h1");
         overMessage.innerHTML = "GAME OVER!"
         clearInterval(idInterval);
-        start = false;
     }
 }
 
+// REINICIA O JOGO
+
+function restartGame() {
+    document.location.href="";
+}
 
