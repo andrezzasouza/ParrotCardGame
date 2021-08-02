@@ -6,10 +6,10 @@
 
 body {
     background-color: #EEF9BF;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {
-    font-family: 'Roboto', sans-serif;
     color: #75B79E;
     text-transform: uppercase;
     margin: 40px 0 47px;
@@ -26,6 +26,37 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
     margin: 0px 99px 153px 105px;
+}
+
+.clock {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    width: 90px;
+    height: 70px;
+}
+
+.show-clock {
+    background-color: #75B79E;
+    color: #EEF9BF;
+    font-size: 40px;    
+    text-align: center;
+    border-radius: 0 0 5px 5px;
+    padding: 5px;
+}
+
+.clock span {
+    font-size: 20px;
+}
+
+.timer {
+    background-color: #3A6B58;
+    color: #EEF9BF;
+    border-radius: 5px 5px 0 0;
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .no-clicking {
@@ -76,12 +107,6 @@ h1 {
 .back {
     width: 100px;
     height: 100px;
-}
-
-.hidden {
-    display: none;
-    width: 0px;
-    height: 0px;
 }
 
 @media (max-width: 600px) {
