@@ -43,10 +43,10 @@ function insertCards(amountCards) {
     for (let i = 0; i < amountCards; i++) {
         insert += `<div class="card" onclick="flipCard(this);">
                         <div class="back-face face effect-back">
-                            <img class="back" src="../img/front.png" />
+                            <img class="back" src="./img/front.png" />
                         </div>
                         <div class="face effect-front">
-                            <img class="front" src="../img/${duplicateArray[i]}" />
+                            <img class="front" src="./img/${duplicateArray[i]}" />
                         </div>
                     </div>`;
 
